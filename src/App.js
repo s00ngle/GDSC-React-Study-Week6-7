@@ -6,6 +6,9 @@ import Home from "./pages/Home";
 import New from "./pages/New";
 import Edit from "./pages/Edit";
 import Diary from "./pages/Diary";
+import MyHeader from "./components/MyHeader";
+import MyButton from "./components/MyButton";
+import RouteTest from "./components/RouteTest";
 
 const reducer = (state, action) => {
     let newState = [];
@@ -77,12 +80,34 @@ function App() {
             >
                 <BrowserRouter>
                     <div className="App">
+                        <MyHeader
+                            headText="Head Test"
+                            leftChild={
+                                <MyButton
+                                    text="Left"
+                                    type="positive"
+                                    onClick={() => {
+                                        alert("왼쪽 버튼");
+                                    }}
+                                />
+                            }
+                            rightChild={
+                                <MyButton
+                                    text="Right"
+                                    type="negative"
+                                    onClick={() => {
+                                        alert("오른쪽 버튼");
+                                    }}
+                                />
+                            }
+                        />
                         <Routes>
                             <Route path="/" element={<Home />} />
                             <Route path="/new" element={<New />} />
                             <Route path="/edit" element={<Edit />} />
                             <Route path="/diary/:id" element={<Diary />} />
                         </Routes>
+                        <RouteTest />
                     </div>
                 </BrowserRouter>
             </DiaryDispatchContext.Provider>

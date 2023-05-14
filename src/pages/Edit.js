@@ -20,7 +20,7 @@ const Edit = () => {
 
             <button
                 onClick={() => {
-                    navigate("/home");
+                    navigate("/");
                 }}
             >
                 HOME으로 가기
