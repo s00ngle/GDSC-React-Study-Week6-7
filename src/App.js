@@ -6,9 +6,6 @@ import Home from "./pages/Home";
 import New from "./pages/New";
 import Edit from "./pages/Edit";
 import Diary from "./pages/Diary";
-import MyHeader from "./components/MyHeader";
-import MyButton from "./components/MyButton";
-import RouteTest from "./components/RouteTest";
 
 const reducer = (state, action) => {
     let newState = [];
@@ -39,8 +36,41 @@ const reducer = (state, action) => {
 export const DiaryStateContext = React.createContext();
 export const DiaryDispatchContext = React.createContext();
 
+const dummyData = [
+    {
+        id: 1,
+        emotion: 1,
+        content: "오늘의 일기 1",
+        date: 1684672583029,
+    },
+    {
+        id: 2,
+        emotion: 2,
+        content: "오늘의 일기 2",
+        date: 1684672583030,
+    },
+    {
+        id: 3,
+        emotion: 3,
+        content: "오늘의 일기 3",
+        date: 1684672583031,
+    },
+    {
+        id: 4,
+        emotion: 4,
+        content: "오늘의 일기 4",
+        date: 1684672583032,
+    },
+    {
+        id: 5,
+        emotion: 5,
+        content: "오늘의 일기 5",
+        date: 1684672583033,
+    },
+];
+
 function App() {
-    const [data, dispatch] = useReducer(reducer, []);
+    const [data, dispatch] = useReducer(reducer, dummyData);
 
     const dataId = useRef(0);
     // CREATE
@@ -80,34 +110,12 @@ function App() {
             >
                 <BrowserRouter>
                     <div className="App">
-                        <MyHeader
-                            headText="Head Test"
-                            leftChild={
-                                <MyButton
-                                    text="Left"
-                                    type="positive"
-                                    onClick={() => {
-                                        alert("왼쪽 버튼");
-                                    }}
-                                />
-                            }
-                            rightChild={
-                                <MyButton
-                                    text="Right"
-                                    type="negative"
-                                    onClick={() => {
-                                        alert("오른쪽 버튼");
-                                    }}
-                                />
-                            }
-                        />
                         <Routes>
                             <Route path="/" element={<Home />} />
                             <Route path="/new" element={<New />} />
                             <Route path="/edit" element={<Edit />} />
                             <Route path="/diary/:id" element={<Diary />} />
                         </Routes>
-                        <RouteTest />
                     </div>
                 </BrowserRouter>
             </DiaryDispatchContext.Provider>
